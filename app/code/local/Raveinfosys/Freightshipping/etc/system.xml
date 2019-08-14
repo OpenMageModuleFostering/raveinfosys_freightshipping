@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<raveinfosys_freightshipping translate="label" module="freightshipping">
+			<label>Raveinfosys Freight</label>
+			<sort_order>9999</sort_order>
+		</raveinfosys_freightshipping>
+	</tabs>
+	<sections>
+		<freightshipping  translate="label" module="freightshipping">                    
+		<label>Shipping Configuration</label>
+		<tab>raveinfosys_freightshipping</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+		<groups>
+			<general>
+				<label>General Configuration</label>				
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<active translate="label">
+						<label>Show Cheapest Rate Only</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<comment>If Yes, it will show only cheapest rate from all available freight quote.</comment>
+					</active>					
+					<shipclass translate="label">
+						<label>Default Ship/Freight Class</label>
+						<frontend_type>text</frontend_type>
+						<!-- <source_model>freightshipping/source_shipclass</source_model> -->
+						<comment>If product's freight class is not defined.</comment>
+						<validate>validate-number</validate>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>						
+					</shipclass>
+					<origin translate="label">
+						<label>Shipping Origin</label>
+						<frontend_type>text</frontend_type>
+						<comment>If empty, module will use the Configuration &#8594; Shipping Setting &#8594; Origin value</comment>						
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>						
+					</origin>					
+					<dest_type>
+						<label>Destination Type</label>
+						<frontend_type>select</frontend_type>
+						<source_model>freightshipping/source_destinationtype</source_model>
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>						
+					</dest_type>
+					<liftgate>
+						<label>Lift Gate Service</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>25</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>						
+					</liftgate>
+					<inside_delivery>
+						<label>Inside Delivery</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>30</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>						
+					</inside_delivery>
+					<dest_notify>
+						<label>Delivery Notification</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>35</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<comment>Additional fees may apply for these services.</comment>
+					</dest_notify>
+					<errormessage translate="label">
+						<label>Displayed Error Message</label>
+						<frontend_type>textarea</frontend_type>
+						<sort_order>75</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</errormessage>
+				</fields>
+			</general>
+			<conway translate="label"> 
+				<label>Con-way Freight</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<active translate="label">
+						<label>Enabled</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</active>
+					<title translate="label">
+						<label>Method Title</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</title>
+					<!-- <apiurl translate="label">
+						<label>Gateway URL</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</apiurl> -->
+					<userid translate="label">
+						<label>Username</label>
+						<frontend_type>obscure</frontend_type>
+						<backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						<sort_order>14</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</userid>
+					<password translate="label">
+						<label>Password</label>
+						<frontend_type>obscure</frontend_type>
+						<backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</password>
+					<shipcode translate="label">
+						<label>Ship Code</label>
+						<comment>If unsure, use "S" as default.</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>freightshipping/source_conway_shipcode</source_model>
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</shipcode>
+					<customerno translate="label">
+						<label>Customer Number</label>
+						<comment>Please enter your Con-way customer number, to get customer specific discount.</comment>
+						<frontend_type>text</frontend_type>
+						<sort_order>25</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</customerno>					
+					<min_weight translate="label">
+						<label>Minimum Package Weight</label>
+						<frontend_type>text</frontend_type>						
+						<validate>validate-number</validate>
+						<sort_order>31</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</min_weight>
+					<max_weight translate="label">
+						<label>Maximum Package Weight</label>
+						<frontend_type>text</frontend_type>
+						<validate>validate-number</validate>
+						<sort_order>32</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</max_weight>
+					<handlingfee_type translate="label">
+						<label>Calculate Handling Fee</label>
+						<frontend_type>select</frontend_type>
+						<source_model>shipping/source_handlingType</source_model>
+						<sort_order>35</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</handlingfee_type>
+					<handlingfee translate="label">
+						<label>Handling Fee</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>40</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</handlingfee>					
+					<!-- <errormessage translate="label">
+						<label>Displayed Error Message</label>
+						<frontend_type>textarea</frontend_type>
+						<sort_order>75</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</errormessage> -->					
+					<sallowspecific translate="label">
+						<label>Ship to Applicable Countries</label>
+						<frontend_type>select</frontend_type>
+						<frontend_class>shipping-applicable-country</frontend_class>
+						<source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+						<sort_order>80</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</sallowspecific>
+					<specificcountry translate="label">
+						<label>Ship to Specific Countries</label>
+						<frontend_type>multiselect</frontend_type>
+						<source_model>freightshipping/source_conway_country</source_model>
+						<sort_order>85</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<!-- <depends><sallowspecific>1</sallowspecific></depends> -->
+					</specificcountry>
+					<debug translate="label">
+						<label>Debug</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>90</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</debug>
+					<!-- <sort_order translate="label">
+						<label>Sort Order</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>95</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</sort_order> -->
+				</fields>
+			</conway>
+			<rlcarriers translate="label"> 
+				<label>R+L Carriers</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>10</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<active translate="label">
+						<label>Enabled</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</active>
+					<title translate="label">
+						<label>Method Title</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</title>
+					<apikey translate="label">
+						<label>API Key</label>
+						<frontend_type>obscure</frontend_type>
+						<backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</apikey>
+					<!-- <apiurl translate="label">
+						<label>Gateway URL</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</apiurl> -->
+					<min_weight translate="label">
+						<label>Minimum Package Weight</label>
+						<frontend_type>text</frontend_type>
+						<validate>validate-number</validate>
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</min_weight>
+					<max_weight translate="label">
+						<label>Maximum Package Weight</label>
+						<frontend_type>text</frontend_type>
+						<validate>validate-number</validate>
+						<sort_order>22</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</max_weight>
+
+					<handlingfee_type translate="label">
+						<label>Calculate Handling Fee</label>
+						<frontend_type>select</frontend_type>
+						<source_model>shipping/source_handlingType</source_model>
+						<sort_order>25</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</handlingfee_type>
+					<handlingfee translate="label">
+						<label>Handling Fee</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>30</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</handlingfee>										
+					<allowed_methods translate="label">
+						<label>Allowed Methods</label>
+						<frontend_type>multiselect</frontend_type>						
+						<source_model>freightshipping/source_rlcarriers_method</source_model>
+						<sort_order>35</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</allowed_methods>
+					<!-- <errormessage translate="label">
+						<label>Displayed Error Message</label>
+						<frontend_type>textarea</frontend_type>
+						<sort_order>40</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</errormessage> -->
+					<sallowspecific translate="label">
+						<label>Ship to Applicable Countries</label>
+						<frontend_type>select</frontend_type>
+						<frontend_class>shipping-applicable-country</frontend_class>
+						<source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+						<sort_order>45</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</sallowspecific>
+					<specificcountry translate="label">
+						<label>Ship to Specific Countries</label>
+						<frontend_type>multiselect</frontend_type>
+						<source_model>freightshipping/source_conway_country</source_model>
+						<sort_order>50</sort_order>						
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<!-- <depends><sallowspecific>1</sallowspecific></depends> -->
+					</specificcountry>					
+					<debug translate="label">
+						<label>Debug</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>55</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</debug>
+					<!-- <sort_order translate="label">
+						<label>Sort Order</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>60</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</sort_order> -->
+				</fields>
+			</rlcarriers>
+		</groups>
+	</freightshipping>
+</sections>
+</config>

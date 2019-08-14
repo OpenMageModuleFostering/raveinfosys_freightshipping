@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Raveinfosys_Freightshipping>
+			<version>0.1.0</version>
+		</Raveinfosys_Freightshipping>
+	</modules>	
+	<global>
+		<events>
+			<sales_quote_save_before> <!-- identifier of the event we want to catch -->
+				<observers>
+					<freightshipping> <!-- identifier of the event handler -->
+						<type>model</type> <!-- class method call type; valid are model, object and singleton -->
+						<class>freightshipping/observer</class> <!-- observers class alias -->
+						<method>saveShippingMethodBefore</method>  <!-- observer's method to be called -->
+						<args></args> <!-- additional arguments passed to observer -->
+					</freightshipping>
+				</observers>
+			</sales_quote_save_before>
+			<sales_model_service_quote_submit_after> <!-- identifier of the event we want to catch -->
+				<observers>
+					<freightshipping> <!-- identifier of the event handler -->
+						<type>model</type> <!-- class method call type; valid are model, object and singleton -->
+						<class>freightshipping/observer</class> <!-- observers class alias -->
+						<method>updateShippingDescription</method>  <!-- observer's method to be called -->
+						<args></args> <!-- additional arguments passed to observer -->
+					</freightshipping>
+				</observers>
+			</sales_model_service_quote_submit_after>
+		</events>
+		<blocks>			
+			<checkout>
+				<rewrite>
+					<onepage_shipping_method_available>Raveinfosys_Freightshipping_Block_Onepage_Shipping_Method_Available</onepage_shipping_method_available>
+				</rewrite>
+			</checkout>			
+			<checkout>
+				<rewrite>
+					<cart_shipping>Raveinfosys_Freightshipping_Block_Checkout_Cart_Shipping</cart_shipping>
+				</rewrite>
+			</checkout>
+		</blocks>		
+		<helpers>
+			<freightshipping>
+				<class>Raveinfosys_Freightshipping_Helper</class>
+			</freightshipping>
+		</helpers>
+		<models>
+			<freightshipping>
+				<class>Raveinfosys_Freightshipping_Model</class>
+				<resourceModel>freightshipping_mysql4</resourceModel>
+			</freightshipping>
+		</models>
+		<resources>
+			<freightshipping_setup>
+				<setup>
+					<module>Raveinfosys_Freightshipping</module>
+					<class>Mage_Eav_Model_Entity_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</freightshipping_setup>
+		</resources>    
+	</global>    
+	<default>
+        <carriers>
+            <conway>
+                <active>1</active>
+                <title>Con-way Freight</title>
+                <model>freightshipping/carrier_conway</model>                
+            </conway>
+            <rlcarriers>
+				<title>R+L Carriers</title>
+                <active>1</active>
+                <model>freightshipping/carrier_rlcarriers</model>                
+            </rlcarriers>
+			<bestquote>
+                <active>1</active>
+                <model>freightshipping/carrier_bestquote</model>                
+            </bestquote>
+        </carriers>		
+    </default>
+</config> 

@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
 	<tabs>
-		<raveinfosys translate="label" module="freightshipping">
+		<raveinfosys_freightshipping translate="label" module="freightshipping">
 			<label>Raveinfosys Freight</label>
 			<sort_order>9999</sort_order>
-		</raveinfosys>
+		</raveinfosys_freightshipping>
 	</tabs>
 	<sections>
 		<freightshipping  translate="label" module="freightshipping">                    
 		<label>Shipping Configuration</label>
-		<tab>raveinfosys</tab>
+		<tab>raveinfosys_freightshipping</tab>
 		<frontend_type>text</frontend_type>
 		<sort_order>0</sort_order>
 		<show_in_default>1</show_in_default>

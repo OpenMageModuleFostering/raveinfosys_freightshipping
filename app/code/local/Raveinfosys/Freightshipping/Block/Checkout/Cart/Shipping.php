@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Magento
  *
@@ -23,20 +24,20 @@
  * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-
-
 class Raveinfosys_Freightshipping_Block_Checkout_Cart_Shipping extends Mage_Checkout_Block_Cart_Shipping
 {
+
     public function getCarrierName($carrierCode)
     {
-		$_helper = Mage::helper('freightshipping');
-		$_carriers = $_helper->getAvailableCarriers();
-		if(in_array($carrierCode, $_carriers) && $name = Mage::getStoreConfig('freightshipping/'.$carrierCode.'/title')){
-			return $name;
-		}
-        if ($name = Mage::getStoreConfig('carriers/'.$carrierCode.'/title')) {			
+        $_helper = Mage::helper('freightshipping');
+        $_carriers = $_helper->getAvailableCarriers();
+        if (in_array($carrierCode, $_carriers) && $name = Mage::getStoreConfig('freightshipping/' . $carrierCode . '/title')) {
+            return $name;
+        }
+        if ($name = Mage::getStoreConfig('carriers/' . $carrierCode . '/title')) {
             return $name;
         }
         return $carrierCode;
     }
+
 }

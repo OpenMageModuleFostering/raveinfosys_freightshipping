@@ -51,7 +51,7 @@ class Raveinfosys_Freightshipping_Model_Carrier_Rlcarriers extends Raveinfosys_F
 		$_rlcRequest["Destination"] = array(
 										"City"				=>	"",
 										"StateOrProvince"	=>	"",
-										"ZipOrPostalCode"	=>	$request->getDestPostcode(),
+										"ZipOrPostalCode"	=>	trim($request->getDestPostcode()),
 										"CountryCode"		=>	$this->getCountryIso3Code($request->getDestCountryId()),
 							);
 		$_rlcRequest["DeclaredValue"] = 0;

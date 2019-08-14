@@ -43,13 +43,14 @@ abstract class Raveinfosys_Freightshipping_Model_Carrier_Abstract
 		if($this->_result){
 			$result = Mage::getModel('shipping/rate_result');
 			foreach($this->_result as $_method) {
+				$finalRates = $this->calculateHandlingFee($_method['rates']);
 				$method = Mage::getModel('shipping/rate_result_method');  
 				$method->setCarrier($_method['carrier']);
 				$method->setCarrierTitle($_method['carrier']);
 				$method->setMethod($_method['code']);
 				$method->setMethodTitle($_method['method']);		
-				$method->setPrice($_method['rates']);
-				$method->setCost($_method['rates']);
+				$method->setPrice($finalRates);
+				$method->setCost($finalRates);
 				$result->append($method);
 			}
 		} elseif($this->_result === false) {
@@ -130,6 +131,7 @@ abstract class Raveinfosys_Freightshipping_Model_Carrier_Abstract
 		if($this->getConfigValue('handlingfee_type', $this->_code) == 'F') {
 			$_rates = $_rates + $this->getConfigValue('handlingfee', $this->_code);
 		} elseif($this->getConfigValue('handlingfee_type', $this->_code) == 'P') {
+			$_handlingFee =  $this->getConfigValue('handlingfee', $this->_code);
 			$_rates = $_rates + ($_rates*$_handlingFee/100);
 		}		
 		return $_rates;

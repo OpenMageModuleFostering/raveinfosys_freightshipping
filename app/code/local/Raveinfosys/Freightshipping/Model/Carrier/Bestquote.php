@@ -15,6 +15,7 @@ class Raveinfosys_Freightshipping_Model_Carrier_Bestquote extends Raveinfosys_Fr
 			$_rates = $model->getRates($request);
 			if($_rates){
 				foreach($_rates as $_rate){
+					$_rate['rates'] = $this->calculateHandlingFee($_rate['rates'],$_rate['carrier']);
 					if($_cheapestRate == 0 || $_cheapestRate[0]['rates'] > $_rate['rates'] ){
 						$_cheapestRate = array($_rate);
 					}
@@ -24,6 +25,16 @@ class Raveinfosys_Freightshipping_Model_Carrier_Bestquote extends Raveinfosys_Fr
 		return $_cheapestRate;
 	}
 	
+	public function calculateHandlingFee($_rates,$_code)
+	{	
+		if($this->getConfigValue('handlingfee_type', $_code) == 'F') {
+			$_rates = $_rates + $this->getConfigValue('handlingfee', $_code);
+		} elseif($this->getConfigValue('handlingfee_type', $_code) == 'P') {
+			$_handlingFee =  $this->getConfigValue('handlingfee', $_code);
+			$_rates = $_rates + ($_rates*$_handlingFee/100);
+		}		
+		return $_rates;
+	}
 	
 	protected function getAvailableCarriers()
 	{

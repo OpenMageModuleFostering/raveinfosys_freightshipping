@@ -137,6 +137,7 @@ class Raveinfosys_Freightshipping_Model_Carrier_Conway extends Raveinfosys_Freig
     {
         $_rates = array();
         $myElements = array('NetCharge');
+		//print_r($myElements);exit;
         for ($i = 0; $i < count($xmlResponse->xpath('//' . $myElements[0])); $i++) {
             foreach ($myElements as $myEl) {
                 $myVals = $xmlResponse->xpath('//' . $myEl);
